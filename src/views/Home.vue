@@ -5,7 +5,9 @@
 </template>
 
 <script>
+import axios from 'axios'
 import { Chart } from "@antv/g2";
+import createApi from "@/api";
 
 export default {
   data() {
@@ -14,9 +16,9 @@ export default {
   methods: {
     print() {
       const data = [
-        { date: '2018-02-02', price: 1800 },
-        { date: '2018-02-03', price: 5000 },
-        { date: '2018-02-04', price: 10000 }
+        { date: "2018-02-02", price: 1800 },
+        { date: "2018-02-03", price: 5000 },
+        { date: "2018-02-04", price: 10000 }
       ];
 
       const chart = new Chart({
@@ -52,6 +54,9 @@ export default {
   },
   mounted() {
     this.print();
+    createApi('getPrice').then(res => {
+      console.log(res, 'res2')
+    })
   }
 };
 </script>
